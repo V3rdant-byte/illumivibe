@@ -25,20 +25,26 @@ To check the code for hardware,
 4. The lua scripts on the WiFi module is in  /hardware/scripts/
 
 ## Backend
+[https://illumivibe.cf/](https://illumivibe.cf/)
 
-Please refer to [README](backend/README.md)
+### Deployment
 
-## Spotify API 
+Make sure the key `illumivibe.pem` is in the project root directory.
+
+#### Deploy
+``./gradlew deploy``
+
+This will connect to and run `startserver.sh` on `illumivibe.cf`.
+
+#### Fetch Log
+``./gradlew fetchLog``
+
+### Scripts
+#### startserver.sh
+This is the script for running the new server process. A version of it with credentials is stored at `illumivibe.cf`. 
+
+## Spotify API (research/spotify)
 This repo is for experimenting with different Spotify Web APIs. 
-
-## Outside Sources Declaration
-
-1. WS2812 Driver (hardware/Blink_mode.v modified, hardware/tb.v copied, hardware/util.v copied): https://github.com/dhrosa/ws2812-verilog/blob/master/
-2. Timer Interrupt (hardware/software/led_software/timer.c modified): https://titanwolf.org/Network/Articles/Article?AID=1e239fca-bf5a-4cfc-89fb-a13d9e861453
-3. More Utils (hardware/Generate_Organ_Tone_Divided_Clk32.sc copied, hardware/SevenSegmentDispayDecoder.sv copied): Jacob Yang's CPEN311 labs
-4. Base 64 Decoding Library (hardware/software/led_software/base64.h copied, hardware/software/led_software/base64.c copied): https://github.com/rafagafe/base64
-5. NodeMCU (This is the link to request for the firmware to flash the RFS board): https://nodemcu.readthedocs.io/en/release/
-6. Lua Intialization Script (hardware/scripts/init.lua modified): https://nodemcu.readthedocs.io/en/release/upload/#initlua
 
 ## Contributions
 
@@ -72,3 +78,12 @@ This repo is for experimenting with different Spotify Web APIs.
 - Flash the RFS board with firmware from NodeMCU
 - Wrote scripts to build Wifi connection and poll requests
 - Connect and parse the data received from JTAG on NIOS
+
+## Outside Sources Declaration
+
+1. WS2812 Driver (hardware/Blink_mode.v modified, hardware/tb.v copied, hardware/util.v copied): https://github.com/dhrosa/ws2812-verilog/blob/master/
+2. Timer Interrupt (hardware/software/led_software/timer.c modified): https://titanwolf.org/Network/Articles/Article?AID=1e239fca-bf5a-4cfc-89fb-a13d9e861453
+3. More Utils (hardware/Generate_Organ_Tone_Divided_Clk32.sc copied, hardware/SevenSegmentDispayDecoder.sv copied): Jacob Yang's CPEN311 labs
+4. Base 64 Decoding Library (hardware/software/led_software/base64.h copied, hardware/software/led_software/base64.c copied): https://github.com/rafagafe/base64
+5. NodeMCU (This is the link to request for the firmware to flash the RFS board): https://nodemcu.readthedocs.io/en/release/
+6. Lua Intialization Script (hardware/scripts/init.lua modified): https://nodemcu.readthedocs.io/en/release/upload/#initlua
