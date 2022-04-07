@@ -1,0 +1,76 @@
+.device-container{
+    position: fixed;
+    top: 0;
+    left: 8vw;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: #ffffff;
+    border-left: 1px solid rgb(206, 206, 206);
+}
+
+.device-registration {
+    padding-left: 2vw;
+    padding-top: 15px;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    width: 100%;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    box-shadow: 0 2px 4px rgba(131, 131, 131, 0.3);
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.device-title {
+    font-size: 1.4em;
+    padding-top: 5px;
+    color: rgb(63, 63, 63);
+}
+
+.device-items {
+    margin-top: 20px;
+    justify-content: left;
+}
+
+.device-btns {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(200px);
+    column-gap: 15px;
+    row-gap: 15px;
+    margin: 3vh 2vw 3vh 2vw; 
+}
+
+@media only screen and (min-width: 1500px) {
+    .device-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.device-grid-item {
+    height: 100%;
+    width: 100%;
+}
+
+.device-active {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    padding-top: 15px;
+}
+
+.device-sub-title {
+    font-size: 1.4em;
+    padding-top: 5px;
+    padding-left: 10px;
+    color: black;
+    font-weight: bold;
+}

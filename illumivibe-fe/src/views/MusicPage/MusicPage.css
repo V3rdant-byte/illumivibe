@@ -1,0 +1,76 @@
+.music-container {
+    position: fixed;
+    top: 0;
+    left: 8vw;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: #ffffff;
+    border-left: 1px solid rgb(206, 206, 206);
+}
+
+.music-search {
+    padding-left: 2vw;
+    padding-top: 15px;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    width: 100%;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    box-shadow: 0 2px 4px rgba(131, 131, 131, 0.3);
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    z-index: 100;
+}
+
+.music-title {
+    font-size: 1.4em;
+    padding-top: 5px;
+    color: rgb(63, 63, 63);
+}
+
+.music-entry {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: left;
+}
+
+.music-list {
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.music-item {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    justify-content: center;
+    align-items: center;
+}
+
+.music-item-name {
+    font-size: 1em;
+    width: 50%;
+    text-align: left;
+    margin-left: 20px;
+    color: rgb(63, 63, 63);
+}
+
+.music-item-artist {
+    font-size: 1em;
+    flex: 1;
+    text-align: left;
+    color: rgb(63, 63, 63);
+}
+
+.music-info {
+    padding-top: 5%;
+    font-size: large;
+    color: rgb(63, 63, 63);
+}

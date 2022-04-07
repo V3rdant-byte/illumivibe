@@ -1,0 +1,45 @@
+.epc-container{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(206, 206, 206);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.epc-name {
+    font-size: 1.5em;
+    padding: 10px 10px 0 15px;
+    font-weight: 500;
+}
+
+.epc-patter {
+    font-size: 15px;
+    padding: 0 15px 0 15px;
+    color: rgb(122, 122, 122);
+}
+
+.epc-tags {
+    padding: 0 15px 12px 15px;
+    flex: 1;
+}
+
+.epc-btns {
+    margin: 0px 15px 13px 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.epc-btn {
+    height: 25px;
+    margin-right: 10px;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.epc-btn:hover {
+    background-color: rgba(231, 231, 231, 0.5);
+    cursor:pointer;
+}

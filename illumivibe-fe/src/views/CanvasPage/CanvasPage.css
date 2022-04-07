@@ -1,0 +1,131 @@
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 8vw;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: #ffffff;
+    border-left: 1px solid rgb(206, 206, 206);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas-heading {
+    position: sticky;
+    top: 0;
+    height: 5%;
+    width: 100%;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    box-shadow: 0 2px 4px rgba(131, 131, 131, 0.3);
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.canvas-title {
+    text-align: left;
+    color: rgba(0, 0, 0, 0.8);
+    padding-left: 15px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.canvas-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    text-align: left;
+}
+
+.canvas-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.canvas-color {
+    width: 250px;
+    height: 100%;
+    border-left: 1px solid rgb(206, 206, 206);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas-color-guide {
+    font-size: 1.1em;
+    color: rgb(134, 134, 134);
+    padding: 10px;
+}
+
+.canvas-color-picker {
+    flex:1;
+}
+
+.canvas-color-preview {
+    height: 3em;
+    width: 3em;
+    border:1px solid rgb(124, 124, 124);
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.canvas-btn {
+    height: 50px;
+}
+
+.canvas-padding {
+    padding-left: 15px;
+}
+
+.canvas-name {
+    display: flex;
+    flex-direction: row;
+}
+
+.canvas-tags {
+    width: 80%;
+}
+
+.canvas-grid {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2,4vw);
+    column-gap: 15px;
+    row-gap: 15px;
+    padding-bottom: 30px;
+}
+
+.canvas-grid-item {
+    height: 100%;
+    width: 100%;
+    border:1px solid rgb(124, 124, 124);
+    border-radius: 5px;
+}
+
+.canvas-grid-item:hover {
+    cursor: pointer;
+}
+
+.canvas-main-guide {
+    font-size: 0.8em;
+    color: rgb(153, 152, 152);
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.canvas-main-prompt {
+    font-size: 1.2em;
+    color: rgb(65, 65, 65);
+    padding-left: 15px;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,30 @@
+span {
+    display: inline-flex;
+}
+
+.tag-icon {
+    height: 60%;
+    margin-right: 3px;
+}
+
+.tags-container {
+    width: 100%;
+    height: 100%;
+}
+
+.epc-tag {
+    border-radius: 2px;
+    border: 1px solid #000000;
+    height: 25px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 10px 0 10px;
+    align-items: center;
+}
+
+.tag-name {
+    font-size: 16px;
+    height: 16px;
+    line-height: 16px;
+    padding-bottom: 3px;
+}
