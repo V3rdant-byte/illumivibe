@@ -31,3 +31,6 @@ Please refer to [README](backend/README.md)
 4. Base 64 Decoding: https://github.com/rafagafe/base64
 5. NodeMCU (This is the link to request for the firmware to flash the RFS board): https://nodemcu.readthedocs.io/en/release/
 6. Lua Intialization Script (hardware/scripts/init.lua copied): https://nodemcu.readthedocs.io/en/release/upload/#initlua
+
+## Contributions
+
