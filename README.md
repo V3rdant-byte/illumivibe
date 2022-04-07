@@ -66,3 +66,4 @@ This repo is for experimenting with different Spotify Web APIs.
 - Flash the RFS board with firmware from NodeMCU
 - Wrote scripts to build Wifi connection and poll requests
 - Connect and parse the data received from JTAG on NIOS
+## Design Overview
