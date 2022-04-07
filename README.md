@@ -33,4 +33,35 @@ Please refer to [README](backend/README.md)
 6. Lua Intialization Script (hardware/scripts/init.lua copied): https://nodemcu.readthedocs.io/en/release/upload/#initlua
 
 ## Contributions
+# Grant Li
+- React Web Application: All of the HTML and CSS
+- Redux and Redux Thunk
+- Action interaction handling with Javascript, on-demand rendering
+- Frontend API Integration: Device, Light Effect, Spotify feature related endpoints
+# Huanfei Chang
+- Hardware integration
+- WS2812 driver
+- Account related API integration in frontend
+- Music related endpoints: Get authorization, Retrieve the related data from Spotify Web API endpoint
+# Juntong
+- All server features & database operations
+- Login, user library, light effect, device, Spotify
+- Writing OpenAPI specifications
+- Passing light effects to the hardware
+# Jacob
+- Algorithm rendering the light effect (hardware)
+One finite state machine to send data to ws2812 driver using start-finish protocol
+One top-level state machine to iterate over the 12 units of leds
+- Light effect data decode and generation with Nios (software)
+PIOs sending color data to the LED strip accelerator
+Two timer interrupt service routines to implement flashing and shifting
+# Juntong & Jacob - RFS board Wifi module integration (software)
+Flash the RFS board with firmware from NodeMCU
+Wrote scripts to build Wifi connection and poll requests
+Connect and parse the data received from JTAG on NIOS
+# Juntong & Jacob - RFS board Wifi module integration (software)
+Flash the RFS board with firmware from NodeMCU
+Wrote scripts to build Wifi connection and poll requests
+Connect and parse the data received from JTAG on NIOS
+
 
