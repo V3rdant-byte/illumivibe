@@ -3,7 +3,7 @@ l2c-30-illumivibe created by GitHub Classroom
 
 - Frontend
 To view the frontend, go to https://illumivibe.netlify.app for the deployed version or,
-1. cd into illumivibe-fe/
+1. cd into frontend/
 2. make sure you have NodeJS
 3. run npm install
 4. run npm start
