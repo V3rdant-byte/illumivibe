@@ -16,3 +16,6 @@ To check the code for hardware,
 2. The project file for the FPGA design is ws2811.qpf
 3. The Nios software is in /hardware/software/
 4. The lua scripts on the WiFi module is in  /hardware/scripts/
+
+- Backend
+Please refer to [README](backend/README.md)
