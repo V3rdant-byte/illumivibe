@@ -1,5 +1,11 @@
-# l2c-30-illumivibe
-l2c-30-illumivibe created by GitHub Classroom
+# IllumiVibe - A Personal Light Effect Editor and Vibe Creator
+by CPEN 391 Group 30
+## Project Description
+This project will allow users to create, edit, and share (social media integration) linear light effects of different patterns for uploading to programmable led strips. In addition, it allows for auto light effect pre-generation for chosen songs from Spotify, and the generated effect is stored until users choose to delete them.
+
+### Design Overview
+![Design Overview](https://user-images.githubusercontent.com/20661066/162269417-0f1f3a63-29b2-437b-a8bd-967c3bc95883.png)
+
 
 ## Frontend
 
@@ -66,5 +72,3 @@ This repo is for experimenting with different Spotify Web APIs.
 - Flash the RFS board with firmware from NodeMCU
 - Wrote scripts to build Wifi connection and poll requests
 - Connect and parse the data received from JTAG on NIOS
-## Design Overview
-![Design Overview](https://user-images.githubusercontent.com/20661066/162269417-0f1f3a63-29b2-437b-a8bd-967c3bc95883.png)
