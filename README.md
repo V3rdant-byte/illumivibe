@@ -1,7 +1,7 @@
 # l2c-30-illumivibe
 l2c-30-illumivibe created by GitHub Classroom
 
-- Frontend
+## Frontend
 
 To view the frontend, go to https://illumivibe.netlify.app for the deployed version or,
 1. cd into frontend/
@@ -11,7 +11,7 @@ To view the frontend, go to https://illumivibe.netlify.app for the deployed vers
 5. view local deployment at localhost:3000
 
 
-- Hardware
+## Hardware
 
 To check the code for hardware, 
 1. cd into /hardware/
@@ -19,6 +19,6 @@ To check the code for hardware,
 3. The Nios software is in /hardware/software/
 4. The lua scripts on the WiFi module is in  /hardware/scripts/
 
-- Backend
+## Backend
 
 Please refer to [README](backend/README.md)
