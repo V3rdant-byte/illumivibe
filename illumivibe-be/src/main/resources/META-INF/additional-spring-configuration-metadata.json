@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "server.port-http",
+      "type": "java.lang.String",
+      "description": "Port for HTTP."
+    },
+    {
+      "name": "frontend-url",
+      "type": "java.lang.String",
+      "description": "URL for the front end."
+    },
+    {
+      "name": "google-client-id",
+      "type": "java.lang.String",
+      "description": "Google login client-id."
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Secret for signing the authentication token."
+    },
+    {
+      "name": "jwt.expires_in",
+      "type": "java.lang.String",
+      "description": "Expiration of the authentication token."
+    },
+    {
+      "name": "spotify.client-id",
+      "type": "java.lang.String",
+      "description": "Spotify Client ID."
+    },
+    {
+      "name": "spotify.client-secret",
+      "type": "java.lang.String",
+      "description": "Spotify Client Secret."
+    }
+  ]
+}

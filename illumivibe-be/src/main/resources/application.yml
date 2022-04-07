@@ -1,0 +1,30 @@
+server:
+    port: 8443
+    port-http: 8080
+    ssl:
+        key-store: ${KEY_STORE_PATH}
+        key-store-password: ${KEY_STORE_PW}
+        key-store-type: pkcs12
+        key-alias: illumivibe
+
+spring:
+    data:
+        mongodb:
+            uri: ${MONGODB_URI}
+            database: illumivibe
+
+jwt:
+    secret: ${JWT_SECRET}
+    expires_in: 3600 # in seconds
+
+logging:
+    level:
+        root: info
+
+frontend-url: https://illumivibe.netlify.app/
+
+google-client-id: ${GOOGLE_CLIENT_ID}
+
+spotify:
+    client-id: bf728c73c9da445a846580288b5626bd
+    client-secret: 060f8790d5be44a2a3eacdd6cffc121a
