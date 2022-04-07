@@ -67,3 +67,4 @@ This repo is for experimenting with different Spotify Web APIs.
 - Wrote scripts to build Wifi connection and poll requests
 - Connect and parse the data received from JTAG on NIOS
 ## Design Overview
+![design overview](figures/Design OverVIew.png)
