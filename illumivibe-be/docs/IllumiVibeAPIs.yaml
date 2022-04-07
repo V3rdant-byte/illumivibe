@@ -1,0 +1,574 @@
+openapi: 3.0.0
+info:
+  title: IllumiVibe
+  version: 0.0.1
+servers:
+- url: https://illumivibe.cf/api
+tags:
+- name: Authentication
+  description: Login
+- name: Light Effects
+  description: Creating and editing light effects
+- name: Device
+  description: Controlling devices
+- name: Share
+  description: Sharing light effects
+- name: Spotify
+  description: Spotify related APIs
+- name: Admin
+  description: Admin only
+- name: Test
+  description: Testing
+paths:
+  /public/login/oauth/google:
+    post:
+      tags:
+      - Authentication
+      summary: Login with Google
+      requestBody:
+        description: Token ID from Google
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleLogin'
+        required: true
+      responses:
+        "200":
+          description: Login successful. The authorization header is return.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationHeader'
+        "400":
+          description: Bad input parameter
+  /user/login/refresh:
+    post:
+      tags:
+      - Authentication
+      summary: Refresh the login token.
+      responses:
+        "200":
+          description: Refresh successful. The new authorization header is return.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationHeader'
+      security:
+      - bearerAuth: []
+  /user/light-effect/query:
+    post:
+      tags:
+      - Light Effects
+      summary: Get metadata for all light effects own by the user
+      requestBody:
+        description: Body of the query
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LightEffectQuery'
+        required: false
+      responses:
+        "200":
+          description: Success. A list of light effect is returned. The content field in each light effect is not set.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/LightEffectList'
+      security:
+      - bearerAuth: []
+  /user/light-effect/create:
+    post:
+      tags:
+      - Light Effects
+      summary: Create a new light effect
+      requestBody:
+        description: Details of the update. Only the title field is mandatory. The id field has no effect.
+        content:
+          application/json:
+            schema:
+              allOf:
+                  - $ref: '#/components/schemas/LightEffect'
+                  - required:
+                    - title
+        required: true
+      responses:
+        "200":
+          description: Successfully created. Details of the new light effect is returned.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/LightEffect'
+                  - required:
+                    - id
+                    - title
+      security:
+      - bearerAuth: []
+  /user/light-effect/{lightEffectId}/detail:
+    get:
+      tags:
+      - Light Effects
+      summary: Get details of the light effect
+      parameters:
+      - name: lightEffectId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully retrieved the light effect
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/LightEffect'
+                  - required:
+                    - id
+                    - title
+        "404":
+          description: Unable to find the light effect
+      security:
+      - bearerAuth: []
+  /user/light-effect/{lightEffectId}/update:
+    put:
+      tags:
+      - Light Effects
+      summary: Update a light effect
+      parameters:
+      - name: lightEffectId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: Details of the new light effect. Only properties to update should be present. The id cannot be changed.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LightEffect'
+        required: true
+      responses:
+        "200":
+          description: Successfully updated
+        "404":
+          description: Unable to find the light effect
+      security:
+      - bearerAuth: []
+  /user/light-effect/{lightEffectId}/delete:
+    delete:
+      tags:
+      - Light Effects
+      summary: Delete a light effect
+      parameters:
+      - name: lightEffectId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully deleted
+        "404":
+          description: Unable to find the light effect
+      security:
+      - bearerAuth: []
+  /user/device/list:
+    get:
+      tags:
+      - Device
+      summary: Get all devices that the user has
+      responses:
+        "200":
+          description: Successfully retrieved. Return an array of device IDs and names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+      security:
+      - bearerAuth: []
+  /user/device/put:
+    put:
+      tags:
+      - Device
+      summary: Add or update a device in the user's device list
+      description: Add a device to the user's device list. If the device is already in the list, update its name.
+      requestBody:
+        description: ID and the user-defined name of the device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        "200":
+          description: Successfully added
+        "404":
+          description: Unkown device ID
+      security:
+      - bearerAuth: []
+  /user/device/get-active:
+    get:
+      tags:
+      - Device
+      summary: Get the current active device
+      responses:
+        "200":
+          description: Successfully retrieved. Return the name and device ID of the active device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+      security:
+      - bearerAuth: []
+  /user/device/{deviceId}/remove:
+    delete:
+      tags:
+      - Device
+      summary: Remove a device from the user's device list
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully removed
+        "404":
+          description: Unable to find the device
+      security:
+      - bearerAuth: []
+  /user/device/{deviceId}/set-active:
+    put:
+      tags:
+      - Device
+      summary: Set the device as the user's active device
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully set as active
+        "404":
+          description: Cannot find the device in the user's assets
+      security:
+      - bearerAuth: []
+  /user/device/{deviceId}/light-effect:
+    put:
+      tags:
+      - Device
+      summary: Update the current light effect of the device
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: lightEffectId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully updated
+        "404":
+          description: Unkown device ID or light effect ID
+      security:
+      - bearerAuth: []
+  /user/device/current-active/light-effect:
+    put:
+      tags:
+      - Device
+      summary: Update the light effect of the current device
+      parameters:
+      - name: lightEffectId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully updated
+        "404":
+          description: Unkown device ID, unkown light effect ID, or no active device
+      security:
+      - bearerAuth: []
+  /public/device/{deviceId}/light-effect/content:
+    get:
+      tags:
+      - Device
+      summary: (Not Implemented) Get the current light effect of the device
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The current light effect
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceContent'
+        "404":
+          description: Unkown device ID
+  /user/sharecode/create:
+    post:
+      tags:
+      - Share
+      summary: Create a share code for the light effect
+      parameters:
+      - name: lightEffectId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully created a share code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareCode'
+        "404":
+          description: Unkown light effect ID
+      security:
+      - bearerAuth: []
+  /user/sharecode/copy:
+    post:
+      tags:
+      - Share
+      summary: Copy the light effect associated with the share code into the user's repository.
+      parameters:
+      - name: code
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully copied the light effect
+        "404":
+          description: Invalid share code
+      security:
+      - bearerAuth: []
+  /user/spotify/search:
+    get:
+      tags:
+      - Spotify
+      summary: Search tracks.
+      parameters:
+      - name: track
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Result of search
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Track'
+      security:
+      - bearerAuth: []
+  /user/spotify/generate:
+    post:
+      tags:
+      - Spotify
+      summary: Generate a light effect based on an audio track and add it to the user's library.
+      parameters:
+      - name: trackId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully generated
+        "400":
+          description: Invalid track ID
+      security:
+      - bearerAuth: []
+  /admin/device/{deviceId}/register:
+    put:
+      tags:
+      - Admin
+      summary: Register a new device
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully registered
+      security:
+      - bearerAuth: []
+  /public/alive:
+    get:
+      tags:
+      - Test
+      summary: Test if the server is alive
+      operationId: alive
+      responses:
+        "200":
+          description: The server is alive
+  /user/test-login:
+    post:
+      tags:
+      - Test
+      summary: Test if the user is logged in
+      operationId: userTest
+      responses:
+        "200":
+          description: The sender is successfully logged in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginCredential'
+        "401":
+          description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    GoogleLogin:
+      required:
+      - idToken
+      type: object
+      properties:
+        idToken:
+          type: string
+          example: bGQif.SwiZXhwIjoxNNjFmIn0.4ZNaxE-O4K38ba_KdOBnnEIt-VbvgW39-jl3dA9P9FC-p6lWBrAZMU-axEr
+    AuthorizationHeader:
+      required:
+      - authHeader
+      type: object
+      properties:
+        authHeader:
+          type: string
+          example: Bearer eyJGpXVCJ9.eyJ1MaMaIn.uofxOPCF_EGgbJCo
+    LoginCredential:
+      required:
+      - expires
+      - role
+      - uid
+      type: object
+      properties:
+        uid:
+          type: string
+          example: "9027885436404028609"
+        role:
+          type: integer
+          example: 50
+        expires:
+          type: integer
+          example: 1644715277
+    LightEffect:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+          example: ["romantic", "night"]
+        period:
+          type: integer
+          example: 1500
+        pattern:
+          type: string
+          example: "shifting"
+        content:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+          example: [[654353, 135345, 45654756, 5432543], [4545, 76575, 6775, 6575876]]
+    DeviceContent:
+      type: string
+      example: ABCDEFG==
+    LightEffectList:
+      type: object
+      properties:
+        lighteffects:
+          type: array
+          items:
+            $ref: '#/components/schemas/LightEffect'
+    LightEffectQuery:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+          example: ["romantic", "night"]
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          example: bedroom
+    DeviceList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+    ShareCode:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+    Track:
+      required:
+      - id
+      - name
+      - artist
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        artist:
+          type: string
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
