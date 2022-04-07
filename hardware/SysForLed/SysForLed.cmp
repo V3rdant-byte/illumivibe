@@ -1,0 +1,24 @@
+	component SysForLed is
+		port (
+			clk_clk                              : in  std_logic                     := 'X'; -- clk
+			color_0_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_1_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_10_export                      : out std_logic_vector(23 downto 0);        -- export
+			color_11_export                      : out std_logic_vector(23 downto 0);        -- export
+			color_2_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_3_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_4_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_5_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_6_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_7_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_8_export                       : out std_logic_vector(23 downto 0);        -- export
+			color_9_export                       : out std_logic_vector(23 downto 0);        -- export
+			reset_reset_n                        : in  std_logic                     := 'X'; -- reset_n
+			start_external_connection_export     : out std_logic;                            -- export
+			wifi_uart0_external_connection_rxd   : in  std_logic                     := 'X'; -- rxd
+			wifi_uart0_external_connection_txd   : out std_logic;                            -- txd
+			wifi_uart0_external_connection_cts_n : in  std_logic                     := 'X'; -- cts_n
+			wifi_uart0_external_connection_rts_n : out std_logic                             -- rts_n
+		);
+	end component SysForLed;
+
