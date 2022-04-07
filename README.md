@@ -4,6 +4,7 @@ by CPEN 391 Group 30
 This project will allow users to create, edit, and share (social media integration) linear light effects of different patterns for uploading to programmable led strips. In addition, it allows for auto light effect pre-generation for chosen songs from Spotify, and the generated effect is stored until users choose to delete them.
 
 ### Design Overview
+Design diagrams of frontend, backend and hardware are in the folder [`figures`](figures).
 ![Design Overview](https://user-images.githubusercontent.com/20661066/162269417-0f1f3a63-29b2-437b-a8bd-967c3bc95883.png)
 
 
